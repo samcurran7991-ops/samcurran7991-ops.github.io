@@ -19,10 +19,11 @@ jobs:
       - run: sleep 60   # let GitHub Pages publish the latest site first
       - run: node tools/thumbs/shoot.mjs
       - run: python tools/thumbs/make.py
+      - run: python tools/thumbs/spark.py
       - name: Save thumbnails
         run: |
           git config user.name "thumbnail-bot"
           git config user.email "thumbnail-bot@users.noreply.github.com"
-          git add thumbs/booking-*.jpg
+          git add thumbs/booking-*.jpg thumbs/spark-*.jpg
           git commit -m "Booking page thumbnails [skip ci]" || echo "no changes"
           git push
