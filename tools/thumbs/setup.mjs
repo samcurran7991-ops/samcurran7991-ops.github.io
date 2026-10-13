@@ -9,7 +9,7 @@ const b = await chromium.launch()
 const p = await b.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5 })
 for (const o of people) {
   await p.goto(o.url, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {})
-  await p.waitForTimeout(9000)
+  await p.waitForTimeout(7000)
   await p.evaluate(() => { window.scrollTo(0, 0); document.querySelectorAll('.show-cue,.fab').forEach(e => e.remove()) })
   await p.waitForTimeout(800)
   await p.screenshot({ path: `tools/thumbs/out/setup-${o.slug}.png` })
